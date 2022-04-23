@@ -1,8 +1,9 @@
-name: Go Test Action
+name: GO CI
 
 on: [push]
 
 jobs:
+
   build:
 
     runs-on: ubuntu-latest

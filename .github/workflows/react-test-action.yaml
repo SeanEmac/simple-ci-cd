@@ -1,8 +1,9 @@
-name: React test action
+name: React CI
 
 on: [push]
 
 jobs:
+
   build:
 
     runs-on: ubuntu-latest

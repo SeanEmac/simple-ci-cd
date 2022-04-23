@@ -1,4 +1,4 @@
-name: React test action
+name: React CI
 
 on: [push]
 

@@ -20,6 +20,8 @@ I used a simple create-react-app frontend just to make a request to the go webse
 
 The code is built into an image using the node-alpine base.
 
+Nginx is used to serve the app in production mode, it also proxies requests to the backend kubernetes service.
+
 ## Kubernetes Deployment
 Once the application iamges have been built, they can be deployed on kubernetes.
 
@@ -29,6 +31,8 @@ Hosting a kubernetes cluster on AWS or similar was too expensive, so i've decide
 https://minikube.sigs.k8s.io/docs/
 
 `minikube start`
+
+`minikube service frontend-service --url`
 
 ### Kubernetes Components
 

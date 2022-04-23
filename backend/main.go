@@ -1,6 +1,7 @@
 package main
 
 import (
+  "fmt"
   "log"
   "net/http"
   "os"
@@ -20,6 +21,7 @@ func enableCors(w *http.ResponseWriter) {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
+  fmt.Printf("Got Request\n")
   enableCors(&w)
 
   data := Response{getColour(), r.URL.Path[1:]}
@@ -35,14 +37,12 @@ func getColour() string {
   if !exists {
     colour = "PINK"
   }
+  fmt.Printf("Colour is %s\n", colour)
   return colour
 }
 
-func add(x, y int) int {
-  return x + y
-}
-
 func main() {
+  fmt.Printf("Starting Webserver\n")
   http.HandleFunc("/", handler)
   log.Fatal(http.ListenAndServe(":8080", nil))
 }

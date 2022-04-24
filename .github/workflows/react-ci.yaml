@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
 
-  build:
+  test_react:
 
     runs-on: ubuntu-latest
 

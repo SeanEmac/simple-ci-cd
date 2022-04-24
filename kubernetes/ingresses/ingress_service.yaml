@@ -5,7 +5,8 @@ metadata:
   namespace: default
 spec:
   rules:
-    - http:
+    - host: "simple.ci.cd"
+      http:
         paths:
           - path: /
             pathType: Prefix

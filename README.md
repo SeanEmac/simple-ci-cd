@@ -34,6 +34,8 @@ https://minikube.sigs.k8s.io/docs/
 
 `minikube service frontend-service --url`
 
+`kubectl run curl-sean --image=radial/busyboxplus:curl -i --tty --rm`
+
 ### Kubernetes Components
 
 The backend and frontend are seperate deployments. The backed container has an env variable to specify the `COLOUR` the go webserver will read.

@@ -2,21 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom"
 
 export default function App() {
-  const [greeting, setGreeting] = useState('');
+  const [path, setPath] = useState('');
   const [colour, setColour] = useState('');
 
   let location = useLocation().pathname;
-  let API = "http://localhost:8080";
-  if (process.env.NODE_ENV === "production") {
-    console.log('Production Mode')
-    API = "http://backend-service:8080";
-  }
+  // let API = "http://localhost:8080";
+  // if (process.env.NODE_ENV === "production") {
+  //   console.log('Production Mode')
+  //   API = "http://backend-service:8080";
+  // }
 
   useEffect(() => {
-    fetch(`${API}${location}`)
+    fetch(`/api${location}`)
       .then(response => response.json())
       .then(data => {
-        setGreeting(data.Greeting)
+        setPath(data.Path)
         setColour(data.Colour)
       });
     
@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <div>
-      Hello {greeting}!
+      Hello {path}!
     </div>
   );
 }

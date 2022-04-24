@@ -10,7 +10,7 @@ import (
 
 type Response struct {
   Colour string
-  Greeting string
+  Path string
 }
 
 // Workaround to stop cors being blocked
@@ -43,6 +43,6 @@ func getColour() string {
 
 func main() {
   fmt.Printf("Starting Webserver\n")
-  http.HandleFunc("/", handler)
+  http.HandleFunc("/api/", handler)
   log.Fatal(http.ListenAndServe(":8080", nil))
 }

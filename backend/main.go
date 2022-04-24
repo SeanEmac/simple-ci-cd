@@ -8,9 +8,8 @@ import (
   "encoding/json"
 )
 
-type Response struct {
+type payload struct {
   Colour string
-  Path string
 }
 
 // Workaround to stop cors being blocked
@@ -24,7 +23,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
   fmt.Printf("Got Request\n")
   enableCors(&w)
 
-  data := Response{getColour(), r.URL.Path[1:]}
+  data := payload{getColour()}
 
   w.WriteHeader(http.StatusOK)
   w.Header().Set("Content-Type", "application/json")
@@ -43,6 +42,6 @@ func getColour() string {
 
 func main() {
   fmt.Printf("Starting Webserver\n")
-  http.HandleFunc("/api/", handler)
+  http.HandleFunc("/api", handler)
   log.Fatal(http.ListenAndServe(":8080", nil))
 }

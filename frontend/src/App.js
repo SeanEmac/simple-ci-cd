@@ -8,6 +8,7 @@ export default function App() {
   let location = useLocation().pathname;
   let API = "http://localhost:8080";
   if (process.env.NODE_ENV === "production") {
+    console.log('Production Mode')
     API = "http://backend-service:8080";
   }
 

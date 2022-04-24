@@ -1,2 +1,2 @@
 bash cleanup.sh
-bash deploy.sh
+bash apply.sh

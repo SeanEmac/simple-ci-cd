@@ -10,6 +10,8 @@ spec:
   selector:
     matchLabels:
       app: backend
+  strategy:
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -20,7 +22,7 @@ spec:
           image: ghcr.io/seanemac/simple-ci-cd/backend:latest
           env:
           - name: COLOUR
-            value: "BLUE"
+            value: "PINK"
           resources:
             requests:
               memory: "64Mi"

@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from "react-router-dom"
 
 export default function App() {
-  const [greeting, setGreeting] = useState('');
   const [colour, setColour] = useState('');
 
-  let location = useLocation().pathname
+  let base = "http://localhost:8080";
+  if (process.env.NODE_ENV === "production") {
+    console.log('Production Mode')
+    base = "";
+  }
 
   useEffect(() => {
-    fetch(`http://localhost:8080${location}`)
+    fetch(`${base}/api`)
       .then(response => response.json())
       .then(data => {
-        setGreeting(data.Greeting)
         setColour(data.Colour)
       });
     
@@ -20,7 +21,7 @@ export default function App() {
 
   return (
     <div>
-      Hello {greeting}!
+      Hello, the environment is {colour}!
     </div>
   );
 }

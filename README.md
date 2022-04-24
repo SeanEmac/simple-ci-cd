@@ -25,19 +25,27 @@ Nginx is used to serve the app in production mode, it also proxies requests to t
 ## Kubernetes Deployment
 Once the application iamges have been built, they can be deployed on kubernetes.
 
+For now there are a few simple bash scrits to bring up and don the app
+
+From kubernetes directory:
+
+`bash cleanup.sh`
+
+`bash deploy.sh`
+
+`bash redeploy.sh`
+
 ### Minikube
 Hosting a kubernetes cluster on AWS or similar was too expensive, so i've decided to just deploy locally using minikube.
 
 https://minikube.sigs.k8s.io/docs/
 
-`minikube start`
+Start the minikube cluster `minikube start`
 
-`minikube service frontend-service --url`
-
-`kubectl run curl-sean --image=radial/busyboxplus:curl -i --tty --rm`
+Temp pod to tests pods and services `kubectl run curl-sean --image=radial/busyboxplus:curl -i --tty --rm`
 
 ### Kubernetes Components
 
 The backend and frontend are seperate deployments. The backed container has an env variable to specify the `COLOUR` the go webserver will read.
 
-There is a backed ClusterIP service to allow backend be accessed at `http://backend-service:8080` from within the default namespcae. The frontend has a NodePort service to allow it be accessed from localhost when running in minikube for example at `http://192.168.49.2:31317`
+There is a backed and frontend ClusterIP service as well as nginx ingress. The ingress allows the frontend to send requests to the backend service, as well as allowing me to view the frontend at `http://simple.ci.cd` once I have the ingress IP added to`/etc/hosts`
